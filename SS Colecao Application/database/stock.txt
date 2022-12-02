@@ -1,0 +1,3 @@
+10, Bikini_Bottom, Black, M, 400
+4, Bikini_Bottom, Pattern, S, 400
+6, Bikini_Top, Pattern, L, 300
