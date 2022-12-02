@@ -1,0 +1,4 @@
+4, 620148488, Jane, Doe, 2, [['bikini_bottom', 'red', 'M'], ['bikini_bottom', 'red', 'M']], Delivery, Pending
+19, 620148938, Jane, Boe, 1, [['bikini_bottom', 'red', 'M']], Pickup, Completed
+1, 620148438, Jane, Ooe, 3, [['bikini_bottom', 'red', 'M'], ['bikini_bottom', 'red', 'M'], ['bikini_bottom', 'red', 'M']], Delivery, Completed
+10, 620148488, Jane, Voe, 4, [['bikini_bottom', 'red', 'M'], ['bikini_bottom', 'red', 'M'], ['bikini_bottom', 'red', 'M'], ['bikini_bottom', 'red', 'M']], Pickup, Pending

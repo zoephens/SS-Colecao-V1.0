@@ -1,0 +1,143 @@
+// This the code for the table i used
+String[] columnNames= {"Order Number","Date","Customer ID","Total Cost"};
+        model=new DefaultTableModel(columnNames,0);
+        table = new JTable(model);
+        showTable(ilist);
+
+        table.setPreferredScrollableViewportSize(new Dimension(500, ilist.size()*15 +50));
+        table.setFillsViewportHeight(true);
+
+//This code is what i want to use to select a row for the table.
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                // TODO Auto-generated method stub
+//This returns the integer of the row selected.
+                System.out.println(selectedRowIntToString(table.getSelectedRow()));
+
+                
+            }
+
+// FUNCTIONS!!!
+
+
+//This function returns the string in the selected row
+ private String selectedRowIntToString(int selectedInt){
+        int counter=-1;
+        int customerId=0;
+        if (ilist.size()>0)
+        {
+            for(Invoice i: ilist)
+            {
+                counter++;
+                if (counter==selectedInt){
+                    customerId=i.getcustomerIdNum();
+                    break;
+                }
+            
+            }
+            return String.valueOf(customerId);
+
+        }
+        else{
+            System.out.println("List is Empty");
+        }
+
+        return String.valueOf(customerId);
+    } 
+
+
+    private void showTable(ArrayList<Invoice> clist)
+    {
+        if (ilist.size()>0)
+        {
+            for(Invoice i: ilist)
+            {
+                addToTable(i);
+            }
+        }
+    }
+
+
+
+    private void addToTable(Invoice i)
+    {
+
+        String[] item={String.valueOf(i.getorderNum()),""+String.valueOf(i.getcustomerIdNum()),""+i.getdate(),""+String.valueOf(i.getcost())};
+        model.addRow(item);
+    }
+
+    public void addPerson(Invoice c)
+    {
+        //not sure where this is used
+        ilist.add(c);
+        addToTable(c);
+
+    }
+
+
+//Returns an arrayList with invoices
+    private ArrayList<Invoice> loadInvoices(){
+        
+        Scanner iscan= null;
+        
+        ArrayList<Invoice> invoicelist = new ArrayList<Invoice>();
+        
+        try{
+            
+            iscan  = new Scanner(new File("/Users/Akele Benjamin/Desktop/SE project/SE project/src/invoiceList.txt"));
+            
+            while(iscan.hasNext())
+            {
+                
+                String [] nextLine = iscan.nextLine().split("%");
+                
+                int orderNum = Integer.parseInt(nextLine[0]);
+                //System.out.println(String.valueOf(orderNum));
+                String date= nextLine[1];
+                //System.out.println(date);
+                int customerIdNum = Integer.parseInt(nextLine[2]);
+                //System.out.println(String.valueOf(customerIdNum));
+                String fname= nextLine[3];
+                //System.out.println(fname);
+                String lname = nextLine[4];
+                //System.out.println(lname);
+                String address= nextLine[5];
+                //System.out.println(address);
+                int quantity = Integer.parseInt(nextLine[6]);
+                //System.out.println(String.valueOf(quantity));
+                
+                String item= nextLine[7];
+                //System.out.println(item);
+
+                int unitPrice = Integer.parseInt(nextLine[8]);
+                //System.out.println(String.valueOf(unitPrice));
+                int cost= Integer.parseInt(nextLine[9]);
+                //System.out.println(String.valueOf(cost));
+
+                String courier= nextLine[10];
+                //System.out.println(courier);
+                
+
+                Invoice userPersonnel= new Invoice(orderNum,date,customerIdNum,fname,lname,address,quantity,item,unitPrice,cost,courier);
+                invoicelist.add(userPersonnel);
+                
+            }
+            iscan.close();
+        }
+        catch(IOException e){}
+        return invoicelist;
+         
+
+    }
+
+//Listener for Overall Sales
+    private class SalesStatsButtonListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+
+
+            
+            }        
+         }
