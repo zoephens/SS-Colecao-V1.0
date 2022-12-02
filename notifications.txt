@@ -1,0 +1,3 @@
+Warehouse:% Blouse are running out
+Orders:% You have 4 orders to make today
+Delivery:% John's package is to be shipped today
